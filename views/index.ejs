@@ -22,6 +22,10 @@
         .button-margin{
             margin:5px;
         }
+
+        [v-cloak] {
+            display: none;
+        }
     </style>
     <body class='top-space'>
         <div id="app">
@@ -40,14 +44,14 @@
                 </div>
                 
                 <!--Error Section-->
-                <div class='row' v-if='error'>
+                <div class='row' v-if='error' v-cloak>
                     <div class="alert alert-danger top-space" role="alert">
                         {{error}}
                     </div>
                 </div>
 
                 <!--Result Section-->
-                <div class='row' v-if='show'>
+                <div class='row' v-if='show' v-cloak>
                     <div class='col-md-12'>
                         <h1>{{user.name}} (@<a href={{user.html_url}} )>{{user.login}}</a>)</h1> 
                         <div class='of'>
