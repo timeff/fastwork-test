@@ -6,7 +6,24 @@
         <script src='https://unpkg.com/vue@1.0.28/dist/vue.min.js' type='text/javascript'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.14.0/axios.min.js' type='text/javascript'></script>
     </head>
-    <body style='margin-top:10px'>
+    <style>
+        .top-space{
+            margin-top:10px;
+        }
+
+        .left-space{
+            margin-left:10px;
+        }
+
+        .of{
+            overflow:auto
+        }
+
+        .button-margin{
+            margin:5px;
+        }
+    </style>
+    <body class='top-space'>
         <div id="app">
             <div class='container'>
                 <div class='row'>
@@ -22,18 +39,20 @@
                     </div>
                 </div>
                 
+                <!--Error Section-->
                 <div class='row' v-if='error'>
-                    <div class="alert alert-danger" role="alert" style='margin-top:5px'>
+                    <div class="alert alert-danger top-space" role="alert">
                         {{error}}
                     </div>
                 </div>
 
+                <!--Result Section-->
                 <div class='row' v-if='show'>
                     <div class='col-md-12'>
                         <h1>{{user.name}} (@<a href={{user.html_url}} )>{{user.login}}</a>)</h1> 
-                        <div style='overflow:auto'>
-                            <img class='img-responsive img-thumbnail' :src=user.avatar_url width='100px' style='float:left'>
-                            <div class='caption' style='float:left; margin-left:15px'>
+                        <div class='of'>
+                            <img class='img-responsive img-thumbnail pull-left' :src=user.avatar_url width='100px'>
+                            <div class='pull-left left-space'>
                                 Followers: {{user.followers}} - Following: {{user.following}}
                                 <br>
                                 Repos: {{user.public_repos}}
@@ -41,7 +60,7 @@
                         </div>
                         <h3>Repos List:</h3>
                         <template v-for='repo in repos'>
-                            <a href={{repo.html_url}} class='btn btn-primary' style='margin:5px'>{{repo.name}}</a>
+                            <a href={{repo.html_url}} class='btn btn-primary button-margin'>{{repo.name}}</a>
                         </template>
                     </div>
                 </div>
